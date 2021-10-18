@@ -1,7 +1,18 @@
 import axios from 'axios';
 import Rating from '../component/rating';
+import { parseRequestUrl } from '../utils';
 
 const HomeScreen = {
+        after_render: () => {
+            //Add product to click button
+            const buttonCart = document.getElementsByClassName('add-button')
+            Array.from(buttonCart).forEach(x => {
+                x.addEventListener('click', (e) => {
+                    const id = e.target.id
+                    document.location.hash = `/cart/${id}`
+                })
+            })
+        },
         render: async() => {
                 const response = await axios({
                     url: 'http://localhost:5000/api/products',
@@ -17,7 +28,8 @@ const HomeScreen = {
 
                 const products = response.data;
 
-                return `<ul class="products"> 
+                return `
+                <ul class="products"> 
                 ${products.map((product) =>
                 `<li>
                     <div class="product">
@@ -39,6 +51,9 @@ const HomeScreen = {
                         <div class="product-price">
                             $${product.price}
                         </div>
+                        <button id="${product._id}" class="add-button primary fw home-button">
+                            Add to Cart
+                        </button>
                     </div>
                 </li>`
             ).join('\n')}

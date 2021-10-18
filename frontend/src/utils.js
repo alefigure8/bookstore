@@ -1,3 +1,4 @@
+//Split URL
 export const parseRequestUrl = () => {
     const url = document.location.hash.toLocaleLowerCase();
     const request = url.split('/');
@@ -6,4 +7,10 @@ export const parseRequestUrl = () => {
         id: request[2],
         action: request[3]
     }
+}
+
+//Update main page when change some parameter
+export const rerender = async(component) => {
+    document.getElementById('container').innerHTML = await component.render();
+    await component.after_render()
 }

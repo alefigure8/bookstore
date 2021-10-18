@@ -11,13 +11,15 @@ export const getProduct = async(id) => {
             },
         });
 
-        if (response.statusText !== 'OK') {
+        if (response.statusText !== 'OK') { //Si hay error, este mensaje es el que se envía a productScreen
             throw new Error(response.data.message);
         }
 
         return response.data;
+
+
     } catch (error) {
         console.log(error);
-        return { error: error.message };
+        return { error: error.response.data.message || error.message };
     }
 }
