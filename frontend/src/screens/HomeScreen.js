@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Rating from '../component/rating';
-import { parseRequestUrl } from '../utils';
+import { hideLoading, showLoading } from '../utils';
 
 const HomeScreen = {
         after_render: () => {
@@ -14,6 +14,7 @@ const HomeScreen = {
             })
         },
         render: async() => {
+                showLoading()
                 const response = await axios({
                     url: 'http://localhost:5000/api/products',
                     method: 'GET',
@@ -21,7 +22,7 @@ const HomeScreen = {
                         "Content-Type": "application/json",
                     }
                 });
-
+                hideLoading()
                 if (!response || response.statusText !== 'OK') {
                     return `<div>error in getting data</div>`;
                 }

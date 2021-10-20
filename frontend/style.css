@@ -57,6 +57,38 @@ button.home-button {
     font-size: 1.2rem;
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 16, 16, 0.5);
+}
+
+.overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.overlay>div {
+    background-color: #fff;
+    color: #000;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 40rem;
+}
+
+.overlay>div>* {
+    margin: 2rem;
+}
+
 .fw {
     width: 100%;
 }
