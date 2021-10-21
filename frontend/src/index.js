@@ -5,6 +5,8 @@ import Error404Screen from './screens/Error404Screen.js';
 import CartScreen from './screens/cartScreen.js'
 import signinScreen from './screens/signinScreen.js';
 import Header from './component/Header.js';
+import RegisterScreen from './screens/RegisterScreen.js';
+import ProfileScreen from './screens/ProfileScreen.js';
 
 const routes = {
     "/": HomeScreen,
@@ -12,10 +14,12 @@ const routes = {
     '/cart/:id': CartScreen,
     '/cart': CartScreen,
     '/signin': signinScreen,
+    '/register': RegisterScreen,
+    '/profile': ProfileScreen
 };
 
 async function router() {
-    showLoading()
+    showLoading();
     const request = parseRequestUrl();
     const parseUrl =
         (request.resource ? `/${request.resource}` : '/') +
@@ -26,8 +30,8 @@ async function router() {
     header.innerHTML = await Header.render()
     const container = document.getElementById('container');
     container.innerHTML = await screen.render();
-    await screen.after_render()
-    hideLoading()
+    if (screen.after_render) await screen.after_render();
+    hideLoading();
 };
 
 window.addEventListener('load', router)

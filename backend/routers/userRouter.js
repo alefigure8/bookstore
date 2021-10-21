@@ -1,7 +1,7 @@
 import express from 'express'
 import User from '../models/userModel.js'
 import expressAsyncHandler from 'express-async-handler'
-import { generateToken } from '../utils.js';
+import { generateToken, usAuth } from '../utils.js';
 const userRouter = express.Router()
 
 
@@ -29,7 +29,7 @@ userRouter.post('/signin',
         const { email, password } = req.body
         const signinUser = await User.findOne({
             email,
-            password
+            password //TODO, hashear with Bcrypt
         });
         if (!signinUser) {
             res.status(401).send({
@@ -46,5 +46,51 @@ userRouter.post('/signin',
         }
     })
 );
+
+userRouter.post('/register', usAuth, expressAsyncHandler(async(req, res) => {
+    const { name, email, password } = req.body;
+    const user = new User({
+        name,
+        email,
+        password,
+    })
+    const registerUser = await user.save()
+    if (!registerUser) {
+        res.status(401).send({
+            message: 'Invalid User Data'
+        });
+    } else {
+        res.send({
+            _id: registerUser._id,
+            name: registerUser.name,
+            email: registerUser.email,
+            isAdmin: registerUser.isAdmin,
+            token: generateToken(registerUser)
+        })
+    }
+}));
+
+userRouter.put('/:id', expressAsyncHandler(async(req, res) => {
+    const { name, email, password } = req.body;
+    const id = req.params.id
+    const user = await User.findOne({ id });
+    if (!user) {
+        res.status(401).send({
+            message: 'User Not Found'
+        });
+    } else {
+        user.name = name || user.name;
+        user.email = email || user.email;
+        user.password = password || user.password;
+        const updatedUser = await user.save()
+        res.send({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            token: generateToken(updatedUser)
+        })
+    }
+}))
 
 export default userRouter;

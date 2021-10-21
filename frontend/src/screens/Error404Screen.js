@@ -1,5 +1,8 @@
+import { hideLoading } from "../utils";
+
 const Error404Screen = {
     render: () => {
+        hideLoading()
         return `<div>Page Not Found</div>`;
     }
 };
