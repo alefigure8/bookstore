@@ -140,6 +140,7 @@ header a {
     color: #ddd;
     font-weight: 500;
     text-decoration: none;
+    padding-right: 1rem;
 }
 
 header a:hover {
@@ -151,6 +152,7 @@ header a:hover {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
     font-size: 3rem;
+    padding-left: 1rem;
 }
 
 .brand a span {
@@ -450,6 +452,12 @@ main {
     box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
 }
 
+.form-container-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-items {
     display: flex;
     flex-direction: column;
@@ -569,4 +577,105 @@ main {
     font-size: 2rem;
     font-weight: 500;
     color: #FF0072;
+}
+
+
+/*Profile*/
+
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 0.1rem solid #ccc;
+    border-radius: .5rem;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 1rem;
+    -webkit-box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+    box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+}
+
+.profile-info {
+    flex: 1 1 20rem;
+}
+
+.profile-orders {
+    flex: 3 1 60rem;
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+table {
+    width: auto;
+}
+
+@media screen and (min-width: 960px) {
+    table {
+        width: 100%;
+    }
+}
+
+th {
+    text-align: left;
+}
+
+tbody>tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+td {
+    padding: 0.5rem;
+}
+
+
+/*Dashboard*/
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.dashboard h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.dashboard-menu {
+    flex: 1 1 20rem;
+    background-color: #f0f0f0;
+}
+
+.dashboard-menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-menu a {
+    display: flex;
+    padding: 1rem;
+    padding-left: 2rem;
+    justify-content: space-between;
+    transition: all .2s ease-in-out;
+}
+
+.dashboard-menu a:hover {
+    color: hsl(333, 100%, 20%);
+    background-color: #c0c0c0;
+}
+
+.dashboard-menu li.selected a {
+    background-color: #c0c0c0;
+    color: hsl(333, 100%, 40%);
+}
+
+.dashboard-menu li {
+    list-style-type: none;
+}
+
+.dashboard-content {
+    flex: 4 1 80rem;
+    padding: 0 1rem;
 }

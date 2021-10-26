@@ -34,7 +34,7 @@ const ProfileScreen = {
                 return `
         <div class="profile">
             <div class="profile-info">
-                <div class="form-container">
+                <div class="form-container-profile">
                     <form id="profile-form">
                         <ul class="form-items">
                             <li>
@@ -60,6 +60,7 @@ const ProfileScreen = {
                 </div>
             </div>
             <div class="profile-orders">
+                <h2>Order History</h2>
                 <table>
                     <thead>
                         <tr>
@@ -78,12 +79,12 @@ const ProfileScreen = {
                                 <td>${order._id}</td>
                                 <td>${order.createdAT}</td>
                                 <td>${order.totalPrice}</td>
-                                <td>${order.paidAT}</td>
-                                <td>${order.deliveredAT}</td>
+                                ${order.paidAT? `<td class="success">${order.paidAT}</td>` : `<td>No</td>`}
+                                ${order.deliveredAT? `<td class="success">${order.deliveredAT}</td>` : `<td>No</td>`}
                                 <td><a href="/#/order/${order._id}">Details</a></td>
                             </tr>
                             `
-                        )}
+                        ).join('\n')}
                     </tbody>
                 </table>
             </div>
