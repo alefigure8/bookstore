@@ -1,7 +1,7 @@
 import express from 'express'
 import User from '../models/userModel.js'
 import expressAsyncHandler from 'express-async-handler'
-import { generateToken, usAuth } from '../utils.js';
+import { generateToken, isAuth } from '../utils.js';
 const userRouter = express.Router()
 
 
@@ -47,7 +47,7 @@ userRouter.post('/signin',
     })
 );
 
-userRouter.post('/register', usAuth, expressAsyncHandler(async(req, res) => {
+userRouter.post('/register', isAuth, expressAsyncHandler(async(req, res) => {
     const { name, email, password } = req.body;
     const user = new User({
         name,

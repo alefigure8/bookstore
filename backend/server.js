@@ -5,6 +5,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import config from './config.js';
 import userRouter from './routers/userRouter.js';
+import orderRouter from './routers/orderRouter.js';
 
 //INIT
 const app = express();
@@ -29,6 +30,10 @@ mongoose
 
 //API JSON
 app.use('/api/users', userRouter);
+app.use('/api/order', orderRouter);
+app.get('/api/paypal/clientid', (req, res) => {
+    res.send({ clientId: config.PAYPAL_CLIENT_ID })
+})
 app.get('/api/products', (req, res) => {
     res.send(data.products);
 });

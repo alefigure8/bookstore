@@ -20,9 +20,43 @@ export const setUserInfo = ({
 
 export const getUserInfo = () => {
     return localStorage.getItem('userInfo') ?
-        JSON.parse(localStorage.getItem('userInfo')) : { name: '', email: '', password: '' }
+        JSON.parse(localStorage.getItem('userInfo')) : { _id: '', name: '', email: '', password: '' }
 };
 
 export const clearUser = () => {
     localStorage.removeItem('userInfo');
+};
+
+export const getShipping = () => {
+    return localStorage.getItem('shipping') ?
+        JSON.parse(localStorage.getItem('shipping')) : {
+            city: '',
+            address: '',
+            postalCode: '',
+            country: ''
+        }
+};
+
+export const setShipping = ({
+    city = '',
+    address = '',
+    postalCode = '',
+    country = ''
+}) => {
+    localStorage.setItem('shipping', JSON.stringify({ city, address, postalCode, country }));
+};
+
+export const getPayment = () => {
+    return localStorage.getItem('payment') ?
+        JSON.parse(localStorage.getItem('payment')) : {
+            paymentMethod: 'paypal'
+        }
+};
+
+export const setPayment = ({ paymentMethod = 'paypal' }) => {
+    localStorage.setItem('payment', JSON.stringify({ paymentMethod }));
+};
+
+export const cleanCart = () => {
+    localStorage.removeItem('cartItems');
 }

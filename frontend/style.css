@@ -195,7 +195,7 @@ main {
 @media screen and (min-width: 960px) {
     .container {
         width: 65%;
-        height: 80vh;
+        height: 100%;
     }
 }
 
@@ -420,9 +420,10 @@ main {
     padding: 1rem;
 }
 
+.form-items li h1,
 .cart-list h3 {
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .cart-price {
@@ -455,6 +456,11 @@ main {
     width: 32rem;
     padding: 2rem;
     list-style-type: none;
+    border: .01rem solid #ccc;
+    border-radius: .5rem;
+    -webkit-box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+    box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
 }
 
 .form-items li {
@@ -467,6 +473,10 @@ main {
     width: 100%;
 }
 
+.form-items .payment-item {
+    width: auto;
+}
+
 .form-items li:last-child {
     text-align: center;
 }
@@ -475,4 +485,88 @@ main {
     font-size: 1.8rem;
     font-weight: 500;
     margin: 0;
+}
+
+
+/*Checkout*/
+
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    width: 40rem;
+    margin: 1rem auto;
+}
+
+.checkout-steps>div {
+    border-top: .3rem solid #b0b0b0;
+    color: #606060;
+    flex: 1 1;
+    padding-top: 1rem;
+}
+
+.checkout-steps>div.active {
+    color: #666;
+    border-top: .3rem solid #01BCD7;
+}
+
+
+/*Order*/
+
+.order {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.order h2 {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.order .cart-list-container {
+    padding: 0;
+}
+
+.order-action,
+.order-info>div {
+    border: 0.1rem solid #ccc;
+    border-radius: .5rem;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 1rem;
+    -webkit-box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+    box-shadow: 2px 4px 3px -1px rgba(0, 0, 0, 0.16);
+}
+
+.order-info>div>div {
+    padding: 1rem;
+}
+
+.order-info {
+    flex: 3 1 60rem;
+}
+
+.order-action {
+    flex: 1 1 20rem;
+    height: fit-content;
+}
+
+.order-action>ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-action li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.order-action .total {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #FF0072;
 }

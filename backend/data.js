@@ -1,6 +1,6 @@
 export default {
     products: [{
-        _id: '1',
+        _id: '111111111111111111111111',
         name: 'Do Androids Dream Of Electric Sheep?',
         category: 'Science Fiction',
         img: '/img/1.jpg',
@@ -10,7 +10,7 @@ export default {
         numReviews: 78.124,
         countInStock: 6
     }, {
-        _id: '2',
+        _id: '222222222222222222222222',
         name: 'It',
         category: 'Horror',
         img: '/img/2.jpg',
@@ -20,7 +20,7 @@ export default {
         numReviews: 128.159,
         countInStock: 12
     }, {
-        _id: '3',
+        _id: '333333333333333333333333',
         name: 'Infinite Jest',
         category: 'Science Fiction',
         img: '/img/3.jpg',

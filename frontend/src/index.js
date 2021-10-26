@@ -7,6 +7,10 @@ import signinScreen from './screens/signinScreen.js';
 import Header from './component/Header.js';
 import RegisterScreen from './screens/RegisterScreen.js';
 import ProfileScreen from './screens/ProfileScreen.js';
+import ShippingScreen from './screens/ShippingScreen.js';
+import PaymentScreen from './screens/PaymentScreen.js';
+import PlaceorderScreen from './screens/PlaceorderScreen.js';
+import OrderScreen from './screens/orderScreen.js';
 
 const routes = {
     "/": HomeScreen,
@@ -15,7 +19,11 @@ const routes = {
     '/cart': CartScreen,
     '/signin': signinScreen,
     '/register': RegisterScreen,
-    '/profile': ProfileScreen
+    '/profile': ProfileScreen,
+    '/shipping': ShippingScreen,
+    '/payment': PaymentScreen,
+    '/placeorder': PlaceorderScreen,
+    '/order/:id': OrderScreen,
 };
 
 async function router() {

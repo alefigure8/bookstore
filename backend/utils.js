@@ -12,7 +12,7 @@ export const generateToken = (user) => {
     )
 };
 
-export const usAuth = (req, res, next) => {
+export const isAuth = (req, res, next) => {
     const bearerToken = req.headers.authorization;
     if (!bearerToken) {
         res.status(404).send({ message: 'Token is not supplied' })

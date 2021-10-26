@@ -1,3 +1,5 @@
+import { getCartItems } from "./localStorage";
+
 //Split URL
 export const parseRequestUrl = () => {
     const url = document.location.hash.toLocaleLowerCase();
@@ -15,6 +17,7 @@ export const rerender = async(component) => {
     await component.after_render()
 }
 
+//Show loading when de page is charging
 export const showLoading = () => {
     document.getElementById('loading-overlay').classList.add('active')
 }
@@ -23,6 +26,7 @@ export const hideLoading = () => {
     document.getElementById('loading-overlay').classList.remove('active')
 }
 
+//Show a mmessage
 export const showMessage = (message, callback) => {
     document.getElementById('message-overlay').innerHTML = `
     <div>
@@ -39,4 +43,13 @@ export const showMessage = (message, callback) => {
             callback()
         }
     })
-}
+};
+
+//rediredct the user if is alredy signin
+export const redirectUser = () => {
+    if (getCartItems().length !== 0) {
+        document.location.hash = '/shipping';
+    } else {
+        document.location.hash = '/';
+    }
+};
